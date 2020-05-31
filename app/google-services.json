@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "620485144581",
+    "firebase_url": "https://traveller-davdev-20.firebaseio.com",
+    "project_id": "traveller-davdev-20",
+    "storage_bucket": "traveller-davdev-20.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:620485144581:android:e2fceaa0a7e00d4804ec6c",
+        "android_client_info": {
+          "package_name": "com.davidrm.traveller"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "620485144581-d3jal7fsm44de6p7u0u1s93m29knf246.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD06EQ5xQ3oNkaTUGcKkNPp7H-_Ztjn7CA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "620485144581-d3jal7fsm44de6p7u0u1s93m29knf246.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
