@@ -14,7 +14,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        //Clase que nos permite hacer una espera de 2000ms
+        //Clase que nos permite hacer una espera de 6000ms
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

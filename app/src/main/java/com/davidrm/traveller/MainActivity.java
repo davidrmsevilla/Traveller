@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private EditText txtEmail;
     private EditText txtPassword;
-    private Button btnRegistro, btnLogin, btnGoogle, btnForgot;
+    private Button btnRegistro, btnLogin, btnGoogle, btnForgot, btnExit;
     private ProgressDialog progressDialog;
     //declaramos un objeto firebaseAuth
 
@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnLogin = findViewById(R.id.buttonLogin);
         btnGoogle = findViewById(R.id.buttonGoogle);
         btnForgot = findViewById(R.id.buttonForgotPassword);
+        btnExit = findViewById(R.id.buttonExit);
 
         progressDialog = new ProgressDialog(this);
 
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnLogin.setOnClickListener(this);
         btnGoogle.setOnClickListener(this);
         btnForgot.setOnClickListener(this);
+        btnExit.setOnClickListener(this);
 
 
         configGoogle();
@@ -94,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         progressDialog.setMessage("Realizando registro en línea...");
+        progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
 
         //creamos el nuevo usuario
@@ -134,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         progressDialog.setMessage("Realizando consulta en linea...");
+        progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
 
         //login a new user
@@ -189,6 +193,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
         progressDialog.setMessage("Accediendo con tu cuenta de Google...");
+        progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
     }
 
@@ -257,6 +262,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(getApplicationContext(),ForgotActivity.class);
                 startActivity(intent);
                 break;
+
+            case R.id.buttonExit:
+                finishAffinity();
 
         }
 

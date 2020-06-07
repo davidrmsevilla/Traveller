@@ -58,7 +58,7 @@ public class ForgotActivity extends AppCompatActivity {
     }
 
     private void resetPassword(){
-        mAuth.setLanguageCode("es");
+        mAuth.setLanguageCode("en");
         mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
