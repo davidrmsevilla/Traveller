@@ -35,5 +35,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         logoutUsuario();
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
+
 
 }

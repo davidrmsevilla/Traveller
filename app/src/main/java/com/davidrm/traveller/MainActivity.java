@@ -77,49 +77,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         configGoogle();
     }
 
-
-
-    private void registrarUsuario() {
-
-        //Obtenemos el email y la contraseña desde las cajas de texto
-        String email = txtEmail.getText().toString().trim(); //trim para eliminar espacios
-        String password = txtPassword.getText().toString().trim();
-
-        if (TextUtils.isEmpty(email)) {
-            Toast.makeText(this, "Se debe ingresar un email", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        if (TextUtils.isEmpty(password)) {
-            Toast.makeText(this, "Falta ingresar la contraseña", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        progressDialog.setMessage("Realizando registro en línea...");
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.show();
-
-        //creamos el nuevo usuario
-
-        firebaseAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        //comprobamos que la operacion se realiza correctamente
-                        if (task.isSuccessful()) {
-                            Toast.makeText(MainActivity.this, "Se ha registrado el email"
-                                    , Toast.LENGTH_LONG).show();
-                            ;
-                        } else {
-                            Toast.makeText(MainActivity.this
-                                    , "No se pudo registrar el usuario", Toast.LENGTH_LONG).show();
-                        }
-                        progressDialog.dismiss();
-                    }
-                });
-
-    }
-
     private void loguearUsuario() {
         //Obtenemos el email y la contraseña desde las cajas de texto
         final String email = txtEmail.getText().toString().trim();
@@ -242,13 +199,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 });
     }
 
-
     @Override
     public void onClick(View v) {
 
+        //Intent intent;
+
         switch (v.getId()) {
             case R.id.buttonRegistro:
-                registrarUsuario();
+                startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
                 break;
             case R.id.buttonLogin:
                 loguearUsuario();
@@ -259,8 +217,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.buttonForgotPassword:
-                Intent intent = new Intent(getApplicationContext(),ForgotActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(getApplicationContext(),ForgotActivity.class));
                 break;
 
             case R.id.buttonExit:
@@ -270,6 +227,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
 
 
 
