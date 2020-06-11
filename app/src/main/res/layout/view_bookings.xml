@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:background="@drawable/fondo_boton"
+
+    >
+
+    <TextView
+        android:id="@+id/textViewActividad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:paddingTop="10dp"
+        android:text="Actividad"
+        android:textColor="@color/white"
+        android:textSize="17sp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/textViewFecha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+
+        android:paddingLeft="30dp"
+        android:text="Fecha"
+        android:textColor="@color/white"
+        android:textSize="17sp">
+
+
+    </TextView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        >
+
+    </View>
+
+
+</LinearLayout>
