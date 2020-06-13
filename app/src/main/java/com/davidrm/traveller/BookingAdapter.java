@@ -27,7 +27,8 @@ public class BookingAdapter extends FirestoreRecyclerAdapter<Actividad,BookingAd
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Actividad actividad) {
         holder.textViewActividad.setText(actividad.getActividad());
-        holder.textViewFecha.setText(String.valueOf(actividad.getFecha()));
+        holder.textViewFecha.setText(actividad.getFecha());
+        holder.textViewHora.setText(actividad.getHora());
 
 
 
@@ -45,12 +46,16 @@ public class BookingAdapter extends FirestoreRecyclerAdapter<Actividad,BookingAd
 
         TextView textViewActividad;
         TextView textViewFecha;
+        TextView textViewHora;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             textViewActividad = itemView.findViewById(R.id.textViewActividad);
             textViewFecha = itemView.findViewById(R.id.textViewFecha);
+            textViewHora = itemView.findViewById(R.id.textViewHora);
+
+
 
 
         }

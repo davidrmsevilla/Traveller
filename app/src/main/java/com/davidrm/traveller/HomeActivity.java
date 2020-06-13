@@ -33,6 +33,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnMostrarDatos;
     private EditText txtActividad;
     private EditText txtFecha;
+    private EditText txtHora;
     private FirebaseAuth mAuth;
 
 
@@ -51,6 +52,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btnMostrarDatos = findViewById(R.id.buttonMostrarDatos);
         txtActividad = findViewById(R.id.editTextActividad);
         txtFecha = findViewById(R.id.editTextFecha);
+        txtHora = findViewById(R.id.editTextHora);
+
 
 
 
@@ -65,12 +68,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private void crearDatos(){
 
         String actividad = txtActividad.getText().toString();
-        long fecha = txtActividad.getDrawingTime();
+        String fecha = txtFecha.getText().toString();
+        String hora = txtHora.getText().toString();
 
 
         Map<String,Object> map = new HashMap<>();
         map.put("actividad", actividad);
         map.put("fecha", fecha);
+        map.put("hora", hora);
+
         db.collection(mAuth.getUid()).add(map).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {

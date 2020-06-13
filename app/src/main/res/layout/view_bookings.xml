@@ -12,32 +12,47 @@
         android:id="@+id/textViewActividad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="30dp"
+        android:textAlignment="center"
         android:paddingTop="10dp"
         android:text="Actividad"
         android:textColor="@color/white"
-        android:textSize="17sp">
+        android:textSize="17sp"
+        android:gravity="center_horizontal">
 
     </TextView>
 
     <TextView
         android:id="@+id/textViewFecha"
+        android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-
-        android:paddingLeft="30dp"
+        android:layout_marginTop="10dp"
         android:text="Fecha"
         android:textColor="@color/white"
-        android:textSize="17sp">
+        android:textSize="17sp"
+        android:gravity="center_horizontal">
 
+
+    </TextView>
+
+
+    <TextView
+        android:id="@+id/textViewHora"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hora"
+        android:textColor="@color/white"
+        android:textSize="17dp"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal">
 
     </TextView>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         >
 
     </View>

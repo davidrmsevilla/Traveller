@@ -3,15 +3,17 @@ package com.davidrm.traveller;
 public class Actividad {
 
     private String actividad;
-    private long fecha;
+    private String fecha;
+    private String hora;
 
     public Actividad(){
 
     }
 
-    public Actividad(String actividad, long fecha){
+    public Actividad(String actividad, String fecha, String hora){
         this.actividad = actividad;
         this.fecha = fecha;
+        this.hora = hora;
     }
 
     public String getActividad() {
@@ -22,11 +24,19 @@ public class Actividad {
         this.actividad = actividad;
     }
 
-    public long getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(long fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
     }
 }
