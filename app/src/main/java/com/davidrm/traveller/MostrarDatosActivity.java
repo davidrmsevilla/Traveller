@@ -40,7 +40,7 @@ public class MostrarDatosActivity extends AppCompatActivity implements View.OnCl
         FirestoreRecyclerOptions<Actividad> firestoreRecyclerOptions = new FirestoreRecyclerOptions
                 .Builder<Actividad>().setQuery(query,Actividad.class).build();
 
-        mAdapter = new BookingAdapter(firestoreRecyclerOptions);
+        mAdapter = new BookingAdapter(firestoreRecyclerOptions,this);
         mAdapter.notifyDataSetChanged();
         recyclerViewActividades.setAdapter(mAdapter);
 
