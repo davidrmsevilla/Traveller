@@ -4,12 +4,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -22,6 +28,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +42,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private EditText txtFecha;
     private EditText txtHora;
     private FirebaseAuth mAuth;
+    private ImageButton btnFecha, btnHora;
+    private int dia, mes, ano, hora, minutos;
 
 
     FirebaseFirestore db;
@@ -53,15 +62,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         txtActividad = findViewById(R.id.editTextActividad);
         txtFecha = findViewById(R.id.editTextFecha);
         txtHora = findViewById(R.id.editTextHora);
-
-
-
-
+        btnFecha = findViewById(R.id.imageButtonFecha);
+        btnHora = findViewById(R.id.imageButtonHora);
 
         btnCrearDatos.setOnClickListener(this);
         btnMostrarDatos.setOnClickListener(this);
+        btnFecha.setOnClickListener(this);
+        btnHora.setOnClickListener(this);
 
-        //obtenerDatos();
 
     }
 
@@ -70,6 +78,21 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         String actividad = txtActividad.getText().toString();
         String fecha = txtFecha.getText().toString();
         String hora = txtHora.getText().toString();
+
+        if (TextUtils.isEmpty(actividad)) {
+            Toast.makeText(this, "Se debe ingresar un nombre", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(fecha)) {
+            Toast.makeText(this, "Se debe ingresar una fecha", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(hora)) {
+            Toast.makeText(this, "Se debe ingresar una hora", Toast.LENGTH_LONG).show();
+            return;
+        }
 
 
         Map<String,Object> map = new HashMap<>();
@@ -91,53 +114,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    /*private void obtenerDatos(){
 
-        /*db.collection(mAuth.getUid()).document("t24J7y1qlYcFaqh0CZas").addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                if(documentSnapshot.exists()) {
-                    
-                    String actividad="Default";
-                    long fecha = 0;
-
-                    if(documentSnapshot.contains("actividad")){
-                        actividad = documentSnapshot.getString("actividad");
-                    }
-
-                    if(documentSnapshot.contains("fecha")){
-                        fecha = documentSnapshot.getLong("fecha");
-                    }                    
-
-                    //txtDatos.setText("Actividad: " + actividad + "\n" + "Fecha: " + fecha);
-                }
-            }
-        });
-
-        /*db.collection("xT4jwoZme1fa5Q1fcmZba2I6fYm1").document("70b29STVOSTyqollH12H").get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if(documentSnapshot.exists()){
-                    String actividad = documentSnapshot.getString("actividad");
-                    long fecha = documentSnapshot.getLong("fecha");
-
-                    txtDatos.setText("actividad: " + actividad + "\n" + "fecha: " + fecha);
-                }
-            }
-        });
-
-    }*/
-
-    private void logoutUsuario() {
-
-        FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(getApplication(),MainActivity.class);
-        startActivity(intent);
-    }
 
     @Override
     public void onClick(View v) {
+
+        final Calendar c = Calendar.getInstance();
 
         switch (v.getId()){
 
@@ -148,6 +130,38 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.buttonMostrarDatos:
                 startActivity(new Intent(HomeActivity.this, MostrarDatosActivity.class));
                 break;
+
+            case R.id.imageButtonFecha:
+
+                dia = c.get(Calendar.DAY_OF_MONTH);
+                mes = c.get(Calendar.MONTH);
+                ano = c.get(Calendar.YEAR);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        txtFecha.setText(String.format("%02d/%02d/%02d",dayOfMonth, (month+1), year));
+
+                    }
+                }, ano, mes, dia);
+                datePickerDialog.show();
+                break;
+
+            case R.id.imageButtonHora:
+                hora = c.get(Calendar.HOUR_OF_DAY);
+                mes = c.get(Calendar.MINUTE);
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        txtHora.setText(String.format("%02d:%02d", hourOfDay, minute));
+                    }
+                },hora,minutos,true);
+                timePickerDialog.show();
+
+
+
+
 
 
         }
