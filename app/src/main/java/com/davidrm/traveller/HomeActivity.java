@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btnLogout;
+
     private Button btnCrearDatos;
     private Button btnMostrarDatos;
     private EditText txtActividad;
@@ -47,7 +47,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
-        btnLogout = findViewById(R.id.buttonLogout);
+
         btnCrearDatos = findViewById(R.id.buttonCrearDatos);
         btnMostrarDatos = findViewById(R.id.buttonMostrarDatos);
         txtActividad = findViewById(R.id.editTextActividad);
@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-        btnLogout.setOnClickListener(this);
+
         btnCrearDatos.setOnClickListener(this);
         btnMostrarDatos.setOnClickListener(this);
 
@@ -141,11 +141,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (v.getId()){
 
-            case R.id.buttonLogout:
-                logoutUsuario();
-                break;
-
-            case R.id.buttonCrearDatos:
+                case R.id.buttonCrearDatos:
                 crearDatos();
                 break;
 

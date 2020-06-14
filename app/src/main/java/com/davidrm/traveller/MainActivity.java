@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             Toast.makeText(MainActivity.this
                                     , "Bienvenido "
                                             + user, Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(getApplication(), HomeActivity.class);
+                            Intent intent = new Intent(getApplication(), MostrarDatosActivity.class);
                             startActivity(intent);
 
                         } else {
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+                            Intent intent = new Intent(getApplicationContext(),MostrarDatosActivity.class);
                             startActivity(intent);
 
                         } else {
