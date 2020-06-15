@@ -37,7 +37,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private Button btnCrearDatos;
-    private Button btnMostrarDatos;
     private EditText txtActividad;
     private EditText txtFecha;
     private EditText txtHora;
@@ -58,7 +57,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
 
         btnCrearDatos = findViewById(R.id.buttonCrearDatos);
-        btnMostrarDatos = findViewById(R.id.buttonMostrarDatos);
         txtActividad = findViewById(R.id.editTextActividad);
         txtFecha = findViewById(R.id.editTextFecha);
         txtHora = findViewById(R.id.editTextHora);
@@ -66,7 +64,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btnHora = findViewById(R.id.imageButtonHora);
 
         btnCrearDatos.setOnClickListener(this);
-        btnMostrarDatos.setOnClickListener(this);
         btnFecha.setOnClickListener(this);
         btnHora.setOnClickListener(this);
 
@@ -125,11 +122,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
                 case R.id.buttonCrearDatos:
                 crearDatos();
+                    startActivity(new Intent(HomeActivity.this, MostrarDatosActivity.class));
                 break;
 
-            case R.id.buttonMostrarDatos:
-                startActivity(new Intent(HomeActivity.this, MostrarDatosActivity.class));
-                break;
+
 
             case R.id.imageButtonFecha:
 
@@ -159,19 +155,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 },hora,minutos,true);
                 timePickerDialog.show();
 
-
-
-
-
-
         }
 
     }
 
-    @Override
-    public void onBackPressed() {
 
-    }
 
 
 }

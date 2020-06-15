@@ -2,19 +2,116 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/fondo_ala"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditarActivity">
+    android:orientation="vertical"
+    tools:context=".EditarActivity"
+    android:padding="20dp">
 
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Editar actividad"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <EditText
+        android:id="@+id/editTextActividadEditar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/linea_boton_w"
+        android:hint="Actividad"
+        android:inputType="text"
+        android:padding="13dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextFechaEditar"
+        android:layout_width="245dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/linea_boton_w"
+        android:hint="Fecha"
+        android:inputType="date"
+        android:paddingLeft="13dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextActividadEditar"
+        android:focusable="false"/>
+
+    <EditText
+        android:id="@+id/editTextHoraEditar"
+        android:layout_width="245dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/linea_boton_w"
+        android:hint="Hora"
+        android:inputType="datetime"
+        android:paddingLeft="13dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextFechaEditar"
+        android:focusable="false"/>
+
+    <Button
+        android:id="@+id/buttonActualizarDatos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/fondo_boton"
+        android:text="Actualizar datos"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextHoraEditar"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/imageButtonFechaEditar"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:background="@drawable/boton_transparente"
+        app:layout_constraintBottom_toTopOf="@+id/editTextHoraEditar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.295"
+        app:layout_constraintStart_toEndOf="@+id/editTextFechaEditar"
+        app:layout_constraintTop_toBottomOf="@+id/editTextActividadEditar"
+        app:layout_constraintVertical_bias="0.471"
+        app:srcCompat="@drawable/ic_baseline_date_range_24" />
+
+    <ImageButton
+        android:id="@+id/imageButtonHoraEditar"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:background="@drawable/boton_transparente"
+        app:layout_constraintBottom_toTopOf="@+id/buttonActualizarDatos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.303"
+        app:layout_constraintStart_toEndOf="@+id/editTextHoraEditar"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonFechaEditar"
+        app:srcCompat="@drawable/ic_baseline_access_time_24" />
+
+    <Button
+        android:id="@+id/buttonEliminarDatos"
+        android:layout_width="183dp"
+        android:layout_height="49dp"
+        android:background="@drawable/fondo_boton_rojo"
+        android:drawableLeft="@drawable/ic_borrar"
+        android:gravity="fill"
+        android:paddingLeft="20dp"
+        android:text="  Borrar actividad"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonActualizarDatos"
+        app:layout_constraintVertical_bias="0.959" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

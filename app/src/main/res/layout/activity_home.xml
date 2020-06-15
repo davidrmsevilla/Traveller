@@ -68,20 +68,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextHora" />
 
-    <Button
-        android:id="@+id/buttonMostrarDatos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/fondo_boton"
-        android:text="Mostrar datos"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCrearDatos" />
-
     <ImageButton
         android:id="@+id/imageButtonFecha"
         android:layout_width="45dp"
