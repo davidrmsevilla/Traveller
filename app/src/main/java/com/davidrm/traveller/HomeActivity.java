@@ -101,6 +101,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onSuccess(DocumentReference documentReference) {
                 Toast.makeText(HomeActivity.this, "La actividad se registró correctamente", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(HomeActivity.this, MostrarDatosActivity.class));
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -111,8 +112,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-
-
     @Override
     public void onClick(View v) {
 
@@ -122,7 +121,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
                 case R.id.buttonCrearDatos:
                 crearDatos();
-                    startActivity(new Intent(HomeActivity.this, MostrarDatosActivity.class));
                 break;
 
 
