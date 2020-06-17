@@ -35,7 +35,7 @@ public class MostrarDatosActivity extends AppCompatActivity implements View.OnCl
         recyclerViewActividades.setLayoutManager(new LinearLayoutManager(this));
         mFirestore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-        Query query = mFirestore.collection(mAuth.getUid());
+        Query query = mFirestore.collection(mAuth.getUid()).orderBy("indice");
 
         FirestoreRecyclerOptions<Actividad> firestoreRecyclerOptions = new FirestoreRecyclerOptions
                 .Builder<Actividad>().setQuery(query,Actividad.class).build();

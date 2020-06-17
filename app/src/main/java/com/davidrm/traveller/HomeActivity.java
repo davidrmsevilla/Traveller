@@ -31,7 +31,10 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -75,6 +78,18 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         String actividad = txtActividad.getText().toString();
         String fecha = txtFecha.getText().toString();
         String hora = txtHora.getText().toString();
+        String indice = fecha + " " + hora;
+
+
+        Date localTime = null;
+        try {
+            localTime = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).parse(indice);
+            System.out.println("TimeStamp is " +localTime.getTime());
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+
+
 
         if (TextUtils.isEmpty(actividad)) {
             Toast.makeText(this, "Se debe ingresar un nombre", Toast.LENGTH_LONG).show();
@@ -96,6 +111,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         map.put("actividad", actividad);
         map.put("fecha", fecha);
         map.put("hora", hora);
+        map.put("indice", localTime);
 
         db.collection(mAuth.getUid()).add(map).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
@@ -156,6 +172,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+
+
 
 
 

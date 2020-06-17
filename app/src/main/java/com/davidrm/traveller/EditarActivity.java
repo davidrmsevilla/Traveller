@@ -21,8 +21,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class EditarActivity extends AppCompatActivity implements View.OnClickListener {
@@ -110,11 +113,23 @@ public class EditarActivity extends AppCompatActivity implements View.OnClickLis
         String fecha = txtEditarFecha.getText().toString();
         String hora = txtEditarHora.getText().toString();
 
+        String indice = fecha + " " + hora;
+
+
+        Date localTime = null;
+        try {
+            localTime = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).parse(indice);
+            System.out.println("TimeStamp is " +localTime.getTime());
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+
         Map<String, Object> map = new HashMap<>();
 
         map.put("actividad", actividad);
         map.put("fecha", fecha);
         map.put("hora", hora);
+        map.put("indice", localTime);
 
         mFirestore.collection(mAuth.getUid()).document(actividadId).update(map)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
